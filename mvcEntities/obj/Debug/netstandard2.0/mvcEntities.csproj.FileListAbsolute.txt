@@ -1,0 +1,9 @@
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\bin\Debug\netstandard2.0\mvcEntities.deps.json
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\bin\Debug\netstandard2.0\mvcEntities.dll
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\obj\Debug\netstandard2.0\mvcEntities.csprojAssemblyReference.cache
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\obj\Debug\netstandard2.0\mvcEntities.AssemblyInfoInputs.cache
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\obj\Debug\netstandard2.0\mvcEntities.AssemblyInfo.cs
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\bin\Debug\netstandard2.0\mvcEntities.pdb
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\obj\Debug\netstandard2.0\mvcEntities.dll
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\obj\Debug\netstandard2.0\mvcEntities.pdb
+C:\Users\reema.sandhu\source\repos\FoodOrderingApp\mvcEntities\obj\Debug\netstandard2.0\mvcEntities.csproj.CoreCompileInputs.cache
