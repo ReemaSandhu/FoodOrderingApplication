@@ -1,0 +1,105 @@
+﻿@model mvcEntities.CustomModel.PaymentCustom
+
+@{ var tempList = new List<SelectListItem>();
+    int index = 1;
+    foreach (var item in ViewBag.payment)
+    {
+        tempList.Add(new SelectListItem() { Text = item, Value = index.ToString() });
+        index++;
+    }
+    var items = tempList; }
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,600i,700"
+      rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="/css/animate.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="/css/icomoon.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="/css/bootstrap.css">
+<!-- Flexslider  -->
+<link rel="stylesheet" href="/css/flexslider.css">
+
+<!-- Theme style  -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/custom-style.css">
+<!-- Modernizr JS -->
+<script src="/js/modernizr-2.6.2.min.js"></script>
+
+<div id="page">
+    <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner"
+            style="background-image: url(/Images/hero_1.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="display-t js-fullheight">
+                        <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+                            <h1>Pay Order</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="pay-order">
+        <div class="container">
+            <form asp-action="PaymentSuccessfull" method="post" id="PaymentValidation">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div>Please pay $@Model.MenuPrice to place your order successfully!</div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    @Html.ValidationMessageFor(Model => Model.Email, "", new { id = "Email_Validation", @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input asp-for="MenuId" type="hidden" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="CategoryId" type="hidden" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" type="text" class="form-control">
+                    @Html.ValidationMessageFor(Model => Model.Address, "", new { id = "Address_Validation", @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Mode of Payment</label>
+                    @Html.DropDownListFor(model => model.ModeId, items, "Select Mode of Payment", htmlAttributes: new { @class = "makewide" })
+                    @Html.ValidationMessageFor(Model => Model.ModeId, "", new { id = "Mode_Validation", @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    <p><input type="button" value="Pay Now" class="btn btn-primary btn-outline" onclick="submitForm()" /></p>
+                    <a asp-controller="Home" asp-action="OrderHistory" class="btn btn-primary btn-outline">
+
+                        Cancel Order
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+</div>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="/js/jquery.waypoints.min.js"></script>
+<!-- Waypoints -->
+<script src="/js/jquery.stellar.min.js"></script>
+<!-- Flexslider -->
+<script src="/js/jquery.flexslider-min.js"></script>
+<!-- Main -->
+<script src="/js/main.js"></script>
+
+<script src="~/js/PaymentValidation.js"></script>

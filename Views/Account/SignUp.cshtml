@@ -1,0 +1,96 @@
+﻿@model mvcEntities.Entities.Registration
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+@{
+    var tempList = new List<SelectListItem>();
+    int index = 1;
+    foreach (var item in ViewBag.UserRole)
+    {
+        tempList.Add(new SelectListItem() { Text = item, Value = index.ToString() });
+        index++;
+    }
+    var items = tempList;
+}
+<link href="~/css/LoginDesign.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 login-box">
+            <div class="col-lg-12 login-key">
+                <i class="fa fa-key" aria-hidden="true"></i>
+            </div>
+            <div class="col-lg-12 login-title">
+                SIGN UP
+            </div>
+            @if(TempData["Error"] != null)
+            {
+                <div style="color:red;">
+                    @TempData["Error"]
+                </div>
+            }
+            <div class="col-lg-12 login-form">
+                <div class="col-lg-12 login-form">
+                    <form asp-action="SignUp" method="post" id="SignUpValidation">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="UserName" class="control-label"></label>
+                            <input asp-for="UserName" class="form-control" />
+                            @Html.ValidationMessageFor(Model => Model.UserName, "", new { id = "Name_Validation", @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            @Html.ValidationMessageFor(Model => Model.Email, "", new { id = "Email_Validation", @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            @Html.ValidationMessageFor(Model => Model.Password, "", new { id = "Password_Validation", @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RoleId" class="control-label"></label>
+                            @Html.DropDownListFor(model => model.RoleId, items, "Select Role", htmlAttributes: new { @class = "makewide" })
+                            @Html.ValidationMessageFor(Model => Model.RoleId, "", new { id = "Role_Validation", @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <input type="button" value="Signup" class="btn btn-primary btn-outline" onclick="submitForm()" />
+                        </div>
+                        <div>
+                            <a asp-action="Login">Already Have an account?</a>
+                        </div>
+                    </form>
+            </div>
+            </div>
+            <div class="col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+    @*jQuery*@
+    <script src="/js/jquery.min.js"></script>
+    @*jQuery Easing*@
+    <script src="/js/jquery.easing.1.3.js"></script>
+    @*Bootstrap*@
+    <script src="/js/bootstrap.min.js"></script>
+    @*Waypoints*@
+    <script src="/js/jquery.waypoints.min.js"></script>
+    @*Waypoints*@
+    <script src="/js/jquery.stellar.min.js"></script>
+    @*Flexslider*@
+    <script src="/js/jquery.flexslider-min.js"></script>
+
+    @*Date Time*@
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.js"></script>
+
+    @*Main*@
+    <script src="/js/main.js"></script>
+
+    <script src="~/js/SignUpValidations.js"></script>

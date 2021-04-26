@@ -1,0 +1,115 @@
+﻿@model mvcEntities.Entities.MenuList
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,600i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+<!-- Animate.css -->
+<link rel="stylesheet" href="/css/animate.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="/css/icomoon.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="/css/bootstrap.css">
+<!-- Flexslider  -->
+<link rel="stylesheet" href="/css/flexslider.css">
+<!-- Date Time -->
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
+<!-- Theme style  -->
+<link rel="stylesheet" href="/css/style.css">
+<!-- Modernizr JS -->
+<script src="/js/modernizr-2.6.2.min.js"></script>
+<div id="page">
+    <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url(/Images/hero_1.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="display-t js-fullheight">
+                        <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+                            <h1>Add Menu</h1>
+                            <h2>Brought to you by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+   
+        <div class="col-md-6 col-md-push-6 col-sm-6 col-sm-push-6">
+            <form asp-action="Create" enctype="multipart/form-data" id="Validations">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="MenuName" class="control-label"></label>
+                    <input asp-for="MenuName" class="form-control" />
+                    @Html.ValidationMessageFor(Model => Model.MenuName, "", new { id = "Menuname_Validation", @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuPrice" class="control-label"></label>
+                    <input asp-for="MenuPrice" class="form-control" />
+                    @Html.ValidationMessageFor(Model => Model.MenuPrice, "", new { id = "Price_Validation", @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuDescription" class="control-label"></label>
+                    <input asp-for="MenuDescription" class="form-control" />
+                    @Html.ValidationMessageFor(Model => Model.MenuDescription, "", new { id = "Des_Validation", @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageUploader" class="control-label"></label>
+                    <input asp-for="ImageUploader" accept="image/*" />
+                    @Html.ValidationMessageFor(Model => Model.MenuImage, "", new { id = "Image_Validation", @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                    @Html.ValidationMessageFor(Model => Model.CategoryId, "", new { id = "Cat_Validation", @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" onclick="submitForm()"/>
+                    <a asp-action="Index" class="btn btn-success btn-outline">Back to List</a>
+                </div>
+            </form>
+        </div>
+    <div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(/Images/hero_1.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>Book a Table</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae enim quae vitae cupiditate, sequi quam ea id dolor reiciendis consectetur repudiandae. Rem quam, repellendus veniam ipsa fuga maxime odio? Eaque!</p>
+                    <p><a href="reservation.html" class="btn btn-primary btn-outline">Book Now</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+</div>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="/js/jquery.waypoints.min.js"></script>
+<!-- Waypoints -->
+<script src="/js/jquery.stellar.min.js"></script>
+<!-- Flexslider -->
+<script src="/js/jquery.flexslider-min.js"></script>
+
+<!-- Date Time -->
+<script src="/js/moment.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.js"></script>
+
+<!-- Main -->
+<script src="/js/main.js"></script>
+
+<script src="~/js/AdminPanelValidation.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
